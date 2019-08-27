@@ -2,13 +2,19 @@ sudo: false
 dist: trusty
 jobs:
   include:
-  - stage: GitHub Release
-    script: sh deploy.sh $TRAVIS_TAG
-    deploy:
-      provider: releases
-      github_token: $GITHUB_TOKEN 
-      api_key: $GITHUB_TOKEN 
-      file: hucon-$TRAVIS_TAG.run
-      skip_cleanup: true
-      on:
-        tags: true
+    - stage: pylint
+      language: python
+      python: "2.7"
+      install:
+        - pip install pylint protector
+      script: protector -i code -i python_lib\OmegaExpansion
+    - stage: GitHub Release
+      script: sh deploy.sh $TRAVIS_TAG
+      deploy:
+        provider: releases
+        github_token: $GITHUB_TOKEN
+        api_key: $GITHUB_TOKEN
+        file: hucon-$TRAVIS_TAG.run
+        skip_cleanup: true
+        on:
+          tags: true
