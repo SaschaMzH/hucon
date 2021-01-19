@@ -16,6 +16,8 @@ nav:
       - getting_started/python.md
       - getting_started/update.md
     - hardware.md
+    - 'Modules':
+      - modules/system.md
     - license.md
 
 theme:
@@ -45,3 +47,5 @@ markdown_extensions:
   - tables
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.tabbed
+  - pymdownx.superfences
