@@ -27,6 +27,15 @@ jobs:
           black: true
           flake8: true
           
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # ESLint and Prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: npm install
+
       - name: Run javascript linters
         uses: wearerequired/lint-action@v1
         with:
@@ -35,9 +44,9 @@ jobs:
           eslint: true
           prettier: true
           
-      - name: Run css linters
-        uses: wearerequired/lint-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Enable linters
-          stylelint: true
+#       - name: Run css linters
+#         uses: wearerequired/lint-action@v1
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           # Enable linters
+#           stylelint: true
