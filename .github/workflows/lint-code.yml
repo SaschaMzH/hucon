@@ -37,7 +37,6 @@ jobs:
       - name: Install Node.js dependencies
         run: | 
           npm install eslint prettier
-          eslint --init
 
       - name: Run javascript linters
         uses: wearerequired/lint-action@v1
